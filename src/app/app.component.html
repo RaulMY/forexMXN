@@ -1,0 +1,44 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="main-container">
+  <div class="sideBar">
+          <h3>Click a Currency</h3>
+          <div class="options-container segment">
+            <div *ngFor="let currency of currencies">
+          <input type="radio" name="currencies" [id]="currency" (change)='getCurrencyValues(value)' [value]="currency" [(ngModel)]="value" /><label [for]="currency"><span>{{currency}}</span></label>
+          </div>
+          </div>
+  </div>
+  <div class="container">
+      <div class="nav">
+          <div id="latestBar">
+            <div class="card" id="EUR-CARD"><img src="http://arcky.herokuapp.com/images/euro.svg"><b>EURMXN: {{latest.MXN}} ({{change.MXN}}%)</b></div>
+            <div class="card" id="USD-CARD"><img src="http://arcky.herokuapp.com/images/dollar.svg"><b>USDMXN: {{latest.USD}} ({{change.USD}}%)</b></div>
+            <div class="card" id="GBP-CARD"><img src="http://arcky.herokuapp.com/images/pound.svg"><b>GBPMXN: {{latest.GBP}} ({{change.GBP}}%)</b></div>
+          </div>
+      </div>
+  <div class="graph">
+    <div class="top">
+      <button class="date-button" (click)="getYear()">Last 12 Months</button>
+      <button class="date-button" (click)="getMonth()">Last 30 Days</button>
+      <button class="date-button" (click)="getWeek()">Last Week</button>
+      <div class="dates">
+        <span>Start Date</span>
+        <input type="date" [(ngModel)]='startDate'>
+        <span>End Date</span>
+        <input type="date" [(ngModel)]='endDate'>
+        <button id="go" (click)="getInterval()">Go!</button>
+      </div>
+      <span>{{message}}</span>
+    </div>
+    <fusioncharts
+        [id]="id"
+        [width]="width"
+        [height]="height"
+        [type]="type"
+        [dataFormat]="dataFormat"
+        [dataSource]="dataSource"
+    ></fusioncharts>
+    </div>
+  </div>
+</div>
