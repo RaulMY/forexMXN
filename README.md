@@ -1,27 +1,17 @@
-# KonfiaFx
+# forexMXN
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+ForexMXN is a simple web application that uses the Fixer.io API to obtain current and historical data of up to 169 different exchange rates.
 
-## Development server
+## FIXER API USAGE
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Given that it uses the free version of Fixer.io it only utilizes two endpoints, one to get the latest exchange rates with the Euro as its base currency, and one to get the exchange rates of a specific date, again with the Euro as its base currency. Changing the currency, or obtaining a time-series is not a feature of the free version.
 
-## Code scaffolding
+## DATA MANIPULATION
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The currencies are transformed to an MXN exchange rate by dividing the EURMXN rate with the respective EUR exchange rate.
+In order to obtain data for a time series, multiple calls are made to the API. In order to not use up all the available usage, depending on how big the time frame is, only up to 15 calls are made per request, divided evenly along the time series.
 
-## Build
+## GRAPH
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+forexMXN uses the FusionCharts Angular component to draw the data obtained from the API.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
